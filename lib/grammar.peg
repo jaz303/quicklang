@@ -26,6 +26,15 @@ RVal
 	= MessageSend
 	/ Expression
 
+MessageSend
+	= receiver:Expression _ message:Message {
+		return mk('send', {
+			receiver	: receiver,
+			selector	: message.selector,
+			args 		: message.args
+		});
+	}
+
 //
 // Helpers
 
