@@ -62,12 +62,18 @@ NoArgMessage
 	}
 
 Expression
-	= v:Boolean _ 			{ return v; }
+	= v:Block _ 			{ return v; }
+	/ v:Boolean _ 			{ return v; }
 	/ v:Integer _ 			{ return v; }
 	/ v:String _ 			{ return v; }
 	/ v:Ident _ 			{ return v; }
 	/ v:Ivar _ 				{ return v; }
 	
+Block
+	= '[' __ messages:Statement* ']' {
+		return mk('block', messages);
+	}
+
 Boolean
 	= 'true' { return true; }
 	/ 'false' { return false; }
