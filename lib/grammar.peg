@@ -103,7 +103,8 @@ Ivar
 // Helpers
 
 TERM
-	= _ NL
+	= _ &']'
+	/ _ NL
 
 NL
 	= '\n'
