@@ -5,3 +5,8 @@
 	}
 }
 
+Program
+	= __ stmts:Statement* {
+		return stmts;
+	}
+
