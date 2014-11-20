@@ -10,6 +10,10 @@ Program
 		return stmts;
 	}
 
+Statement
+	= stmt:Assignment TERM __ { return stmt; }
+	/ stmt:MessageSend TERM __ { return stmt; }
+
 //
 // Helpers
 
