@@ -35,6 +35,37 @@ MessageSend
 		});
 	}
 
+Expression
+	= v:Boolean _ 			{ return v; }
+	/ v:Integer _ 			{ return v; }
+	/ v:String _ 			{ return v; }
+	/ v:Ident _ 			{ return v; }
+	/ v:Ivar _ 				{ return v; }
+	
+Boolean
+	= 'true' { return true; }
+	/ 'false' { return false; }
+
+Integer
+	= val:$([0-9]+) {
+		return parseInt(val, 10);
+	}
+
+String
+	= '"' chars:$( [^"]* ) '"' {
+		return chars;
+	}
+
+Ident
+	= name:$( [A-Za-z_] [A-Za-z0-9_]* ) {
+		return mk('ident', {name: name});
+	}
+
+Ivar
+	= '@' name:$( [A-Za-z_] [A-Za-z0-9_]* ) {
+		return mk('ivar', {name: name});	
+	}
+
 //
 // Helpers
 
