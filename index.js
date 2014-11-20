@@ -5,6 +5,6 @@ var source      = fs.readFileSync(filename, 'utf8');
 var parser = require('./lib/parser');
 var ast = parser.parse(source + "\n");
 
-console.log(require('util').inspect(ast, {depth: null, colors: true}));
+// console.log(require('util').inspect(ast, {depth: null, colors: true}));
 
-// require('./lib/interpret')(ast);
+require('./lib/interpret')(ast);
