@@ -14,6 +14,14 @@ Statement
 	= stmt:Assignment TERM __ { return stmt; }
 	/ stmt:MessageSend TERM __ { return stmt; }
 
+Assignment
+	= target:Ident _ ':=' _ val:RVal {
+		return mk('assign', {
+			target 	: target.name,
+			value 	: val
+		});
+	}
+
 //
 // Helpers
 
