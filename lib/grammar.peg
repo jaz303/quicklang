@@ -10,3 +10,11 @@ Program
 		return stmts;
 	}
 
+//
+// Helpers
+
+_
+	= [ \t]*
+
+__
+	= [ \r\n\t]*
