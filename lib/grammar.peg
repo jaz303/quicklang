@@ -35,6 +35,32 @@ MessageSend
 		});
 	}
 
+Message
+	= ArgMessage
+	/ NoArgMessage
+
+ArgMessage
+	= head:ArgMessagePair tail:(__ ArgMessagePair)* {
+		var all = [head].concat(tail.map(function(t) { return t[1]; }));
+		return {
+			selector: all.map(function(s) { return s[0]; }).join(':') + ':',
+			args: all.map(function(s) { return s[1]; })
+		};
+	}
+
+ArgMessagePair
+	= name:Ident ':' _ value:Expression _ {
+		return [name.name, value];
+	}
+
+NoArgMessage
+	= name:Ident _ {
+		return {
+			selector 	: name.name,
+			args 		: []
+		};
+	}
+
 Expression
 	= v:Boolean _ 			{ return v; }
 	/ v:Integer _ 			{ return v; }
