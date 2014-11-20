@@ -17,6 +17,13 @@ Statement
 //
 // Helpers
 
+TERM
+	= _ NL
+
+NL
+	= '\n'
+	/ '\r' '\n'?
+
 _
 	= [ \t]*
 
