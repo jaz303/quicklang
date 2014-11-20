@@ -68,6 +68,7 @@ Expression
 	/ v:String _ 			{ return v; }
 	/ v:Ident _ 			{ return v; }
 	/ v:Ivar _ 				{ return v; }
+	/ '(' _ v:RVal ')' _ 	{ return v; }
 	
 Block
 	= '[' __ messages:Statement* ']' {
