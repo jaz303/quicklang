@@ -1,0 +1,7 @@
+{
+	function mk(type, obj) {
+		obj.type = type;
+		return obj;
+	}
+}
+
